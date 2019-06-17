@@ -75,7 +75,6 @@ class fileManager(object):
 			if args:
 				if args[0] == cmds.optionMenu(selectedMenu, q=True, v=True):
 					changeFlag = i
-					print 'line81, changeFlag: ', changeFlag
 				elif i > changeFlag:
 					self.updateOptionMenu(i, selectedMenu, iterPath, self.prefs[i])
 			else:
@@ -88,7 +87,7 @@ class fileManager(object):
 		self.updatePrefs(newPrefs)
 	
 	def createProject(self, *args):
-		newRoot = os.path.dirname(os.path.dirname(self.currentPath))
+		newRoot = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(self.currentPath))))
 		message = "Creating a new project in:\n\n" + newRoot + "\n\nEnter name:"
 
 		projectName = cmds.promptDialog(title="New project", message=message, button=['OK', 'Cancel'], defaultButton='OK', text=cmds.optionMenu(self.menus[2], q=True, v=True), cancelButton='Cancel', dismissString='Cancel')
